@@ -11,11 +11,10 @@ Flight prices fluctuate rapidly based on factors like seasonality, booking lead 
 ---
 
 ## Installation Instructions
-
-1. **Clone the repository:**
-   ```bash
+python -m venv venv
+venv\Scripts\activate
   
-#Dataset Title: flight_pricing_dataset.csv
+# Dataset Used:
 
 Source Attributes:
 
@@ -46,7 +45,7 @@ Computed multivariate correlation matrices to inspect relationships between dist
 
 Analyzed price trends based on booking advance windows (Days_Before_Departure).
 
-🛠️ Technologies Used
+#Technologies Used
 Programming Language: Python 3.8+
 
 Data Processing & Manipulation: Pandas, NumPy
