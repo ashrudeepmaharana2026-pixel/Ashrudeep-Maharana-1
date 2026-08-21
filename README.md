@@ -173,14 +173,18 @@ Price Standardization: Stripped non-numeric formatting including currency prefix
 Duration Canonicalization: Standardized mixed representations ("1h 45m", "105 min", decimal hours "1.75") into a uniform numerical variable: Total Minutes.
 Layover Consolidation: Categorized missing and string layover variants ("non-stop", "1 stop", "2 stops") into standardized integer codes (0, 1, 2).
 Text Normalization: Trimmed leading whitespace and standardized airline/city names using proper title casing.
- Technologies  Used
+
+Technologies  Used
+ 
 Python 3.x: Core programming language.
 Pandas: Data manipulation, missing value handling, and aggregation.
 NumPy: Numerical computation and array manipulations.
 Matplotlib: Low-level plotting and visual styling adjustments.
 Seaborn: High-level statistical visualization (boxplots, heatmaps, scatterplots).
 Regex (re): String pattern matching for flight duration extraction.
+
 Results
+
 1. Primary Price Drivers
 Travel Class Premium: Travel class is the strongest single predictor of cost. First and Business class tickets carry a 300% to 500% premium over standard Economy rates on international long-haul routes.
 Booking Window Dynamics: Booking within a 0–14 day lead window results in exponential price spikes, whereas booking 30+ days prior offers baseline pricing stability.
@@ -188,14 +192,18 @@ Airline Categorization: Premium international carriers (e.g., Qatar Airways, Emi
 2. Feature Correlations
 Distance vs. Duration: High positive correlation (r > 0.85) between flight distance (Distance_km) and duration (Duration_Mins).
 Distance vs. Price: Strong positive correlation for international routes, though class selection remains an overriding factor.
+
  Challenges Faced 
+ 
 Heterogeneous Flight Durations:
 Challenge: The dataset stored flight duration in mixed formats (decimal hours, minutes string, hours/minutes string).
 Solution: Built a custom regular expression parser (duration_to_mins) to evaluate and convert all variants into integer minutes.
 Noisy Currency Formats:
 Challenge: Price entries contained mixed numeric floats and string formats (e.g., "Rs. 116,295.34").
 Solution: Implemented string stripping routines before typecasting to floating-point numbers, safely coercing invalid values to NaN.
+
 Future Enhancements
+
 Machine Learning Pipelines: Train regression algorithms (Random Forest, XGBoost, LightGBM) to forecast flight prices based on route and lead time.
 Feature Importance Analysis: Use SHAP (SHapley Additive exPlanations) values to explain individual feature contributions to predicted flight prices.
 Interactive Web App: Build a Streamlit web interface allowing users to input route parameters and receive instant price predictions and historical trends.
