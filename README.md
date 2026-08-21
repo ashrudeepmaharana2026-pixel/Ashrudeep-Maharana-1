@@ -96,7 +96,7 @@ def clean_stops(val):
         return 2
     return 0
 df['Total_Stops'] = df['Total_Stops'].apply(clean_stops)
-# Clean 'Duration' to Total Minutes
+#Clean 'Duration' to Total Minutes
 def duration_to_mins(val):
     if pd.isna(val):
         return np.nan
@@ -116,25 +116,25 @@ def duration_to_mins(val):
         return np.nan
 
 df['Duration_Mins'] = df['Duration'].apply(duration_to_mins)
-# Clean Categorical Text
+ Clean Categorical Text
 df['Airline'] = df['Airline'].str.title().str.strip()
 df['Travel_Class'] = df['Travel_Class'].str.title().str.strip()
-# --- 3. Five Meaningful Visualizations ---
-# Viz 1: Price Distribution by Travel Class
+ --- 3. Five Meaningful Visualizations ---
+ Viz 1: Price Distribution by Travel Class
 plt.figure()
 sns.boxplot(data=df, x='Travel_Class', y='Price', palette='Set2')
 plt.title('1. Price Distribution across Travel Classes')
 plt.xlabel('Travel Class')
 plt.ylabel('Price (INR)')
 plt.show()
-# Viz 2: Impact of Days Before Departure on Price
+Viz 2: Impact of Days Before Departure on Price
 plt.figure()
 sns.scatterplot(data=df, x='Days_Before_Departure', y='Price', hue='Travel_Class', alpha=0.7)
 plt.title('2. Price vs. Days Before Departure')
 plt.xlabel('Days Before Departure')
 plt.ylabel('Price (INR)')
 plt.show()
-# Viz 3: Average Price by Airline
+ Viz 3: Average Price by Airline
 plt.figure()
 avg_price_airline = df.groupby('Airline')['Price'].mean().sort_values(ascending=False).reset_index()
 sns.barplot(data=avg_price_airline, x='Price', y='Airline', palette='viridis')
@@ -142,13 +142,13 @@ plt.title('3. Average Flight Price by Airline')
 plt.xlabel('Average Price (INR)')
 plt.ylabel('Airline')
 plt.show()
-# Viz 4: Correlation Heatmap of Numerical Features
+Viz 4: Correlation Heatmap of Numerical Features
 plt.figure()
 numeric_cols = ['Price', 'Distance_km', 'Days_Before_Departure', 'Duration_Mins', 'Total_Stops', 'Passenger_Count']
 sns.heatmap(df[numeric_cols].corr(), annot=True, cmap='coolwarm', fmt=".2f")
 plt.title('4. Numerical Feature Correlation Matrix')
 plt.show()
-# Viz 5: Seasonal Price Variation by Booking Channel
+ Viz 5: Seasonal Price Variation by Booking Channel
 plt.figure()
 sns.barplot(data=df, x='Season', y='Price', hue='Booking_Channel', ci=None, palette='magma')
 plt.title('5. Average Price by Season and Booking Channel')
