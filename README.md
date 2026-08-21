@@ -15,7 +15,7 @@ Flight prices fluctuate rapidly based on factors like seasonality, booking lead 
 1. **Clone the repository:**
    ```bash
   
-Dataset Title: flight_pricing_dataset.csv
+#Dataset Title: flight_pricing_dataset.csv
 
 Source Attributes:
 
@@ -27,7 +27,7 @@ Timing Features: Departure_Date, Departure_Time, Arrival_Time, Duration, Weekday
 
 Transaction Info: Travel_Class, Total_Stops, Days_Before_Departure, Booking_Channel, Passenger_Count, Price
 
-⚙️ Methodology
+# Methodology
 Data Preprocessing & Standardisation:
 
 Price Cleaning: Stripped currency strings (e.g., "Rs.") and commas to cast prices into continuous numeric floats.
@@ -55,19 +55,19 @@ Data Visualization: Matplotlib, Seaborn
 
 Pattern Matching: Regular Expressions (re)
 
-📈 Results
+# Results
 Class Margin: Travel class is the primary price driver. Business and First Class tickets carry a 3x to 5x markup over standard Economy fares.
 
 Lead Time Impact: Flight prices spike significantly when booked within 14 days of departure, whereas booking 30+ days in advance stabilizes baseline fares.
 
 Carrier Variance: Premium international carriers (e.g., Qatar Airways, Emirates) show higher price variance compared to low-cost domestic carriers (e.g., IndiGo, SpiceJet).
 
-⚠️ Challenges Faced
+# Challenges Faced
 Mixed Duration String Formats: The dataset logged durations inconsistently (decimal hours vs. string minutes vs. hours/minutes). This was solved by creating a regex-based parsing function to convert all entries into total minutes.
 
 Inconsistent Price Formats: Several entries contained raw string currency labels (e.g., "Rs. 151,632.89"), which were systematically stripped and coerced to floats.
 
-🚀 Future Improvements
+# Future Improvements
 Machine Learning Models: Build predictive regression models (e.g., Random Forest, XGBoost) to forecast ticket prices based on booking parameters.
 
 Interactive Dashboard: Build a Web UI using Streamlit to let users filter route prices and view real-time fare trends.
