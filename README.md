@@ -18,7 +18,7 @@ Installation & Setup Instructions
 
 Python 3.8+ installed on your system.
 Git for repository cloning.
-### Step-by-Step Environment Setup
+ Step-by-Step Environment Setup
 1. Clone the Repository:
   git clone [https://github.com/your-username/ai-travel-analyst.git](https://github.com/your-username/ai-travel-analyst.git)
    cd ai-travel-analyst
@@ -66,13 +66,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import re
-# Set plotting style
+ Set plotting style
 sns.set_theme(style="whitegrid")
 plt.rcParams["figure.figsize"] = (10, 6)
-# 1. Load Data
+1. Load Data
 df = pd.read_csv("flight_pricing_dataset.csv")
-# 2. Data Cleaning
-# Clean 'Price' column
+ 2. Data Cleaning
+ Clean 'Price' column
 def clean_price(val):
     if pd.isna(val):
         return np.nan
@@ -83,7 +83,7 @@ def clean_price(val):
         return np.nan
 df['Price'] = df['Price'].apply(clean_price)
 df = df.dropna(subset=['Price']) # Drop rows where Price is missing
-# Clean 'Total_Stops'
+ Clean 'Total_Stops'
 def clean_stops(val):
     if pd.isna(val):
         return 0
