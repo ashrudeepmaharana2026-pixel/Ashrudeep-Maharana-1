@@ -1,0 +1,84 @@
+import csv
+import json
+import re
+
+# UPDATE THIS TO YOUR ACTUAL CSV FILE LOCATION
+file_path = r"C:\Users\ashru\Downloads\flight_pricing_dataset.csv"
+
+
+def clean_price(val):
+    if not val:
+        return None
+    val_str = str(val).replace("Rs.", "").replace(",", "").strip()
+    try:
+        return float(val_str)
+    except ValueError:
+        return None
+
+
+def clean_stops(val):
+    if not val:
+        return 0
+    val_str = str(val).lower().strip()
+    if "non-stop" in val_str or val_str == "0":
+        return 0
+    elif "1 stop" in val_str or val_str == "1":
+        return 1
+    elif "2 stop" in val_str or "2" in val_str:
+        return 2
+    return 0
+
+
+def duration_to_mins(val):
+    if not val:
+        return None
+    val_str = str(val).strip()
+    h_m = re.findall(r"(\d+)h\s*(\d+)m", val_str)
+    if h_m:
+        return int(h_m[0][0]) * 60 + int(h_m[0][1])
+    mins = re.findall(r"(\d+)\s*min", val_str)
+    if mins:
+        return int(mins[0])
+    try:
+        return float(val_str) * 60
+    except ValueError:
+        return None
+
+
+prices_by_class = {}
+prices_by_airline = {}
+total_records = 0
+
+with open(file_path, mode="r", encoding="utf-8-sig") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        # Normalize column names to lowercase to handle spacing issues
+        row_lower = {
+            k.lower().strip(): v for k, v in row.items() if k is not None
+        }
+
+        price = clean_price(row_lower.get("price"))
+        if price is None:
+            continue
+
+        travel_class = (
+            row_lower.get("travel_class", "Unknown").strip().title()
+        )
+        airline = row_lower.get("airline", "Unknown").strip().title()
+
+        prices_by_class.setdefault(travel_class, []).append(price)
+        prices_by_airline.setdefault(airline, []).append(price)
+        total_records += 1
+
+print(f"=== SUCCESSFULLY PROCESSED {total_records} RECORDS ===\n")
+
+print("--- AVERAGE PRICE BY TRAVEL CLASS ---")
+for t_class, prices in prices_by_class.items():
+    avg = sum(prices) / len(prices)
+    print(f"{t_class}: Rs. {avg:,.2f}")
+
+print("\n--- AVERAGE PRICE BY AIRLINE ---")
+for airline, prices in prices_by_airline.items():
+    avg = sum(prices) / len(prices)
+    print(f"{airline}: Rs. {avg:,.2f}")
+
