@@ -3,14 +3,19 @@ README
 Project Overview
 
 The *AI Travel Analyst* project is a comprehensive data science solution engineered to decode dynamic flight pricing mechanics. In the modern aviation industry, pricing algorithms respond dynamically to demand, lead times, carrier positioning, and seasonal trends. This project delivers an end-to-end analytical pipeline that cleans raw, real-world booking datasets, standardizes fragmented feature formats, conducts Exploratory Data Analysis (EDA), and uncovers key factors driving ticket prices.
+
 Project Statement
+
 Flight pricing is notoriously opaque and volatile, making it difficult for both consumers to optimize booking times and travel platforms to offer transparent pricing insights. Raw travel datasets often suffer from severe data quality issues, including mixed currency formats, inconsistent duration strings, missing route parameters, and unstandardized carrier naming conventions. 
+
 Core Objectives:
 1. Clean and standardize raw flight booking data containing dirty text and missing values.
 2. Build an automated feature-engineering pipeline for flight durations and advance booking windows.
 3. Conduct in-depth univariate, bivariate, and multivariate Exploratory Data Analysis (EDA).
 4. Identify major drivers behind flight prices and synthesize actionable recommendations for travelers.
+   
 Installation & Setup Instructions
+
 Python 3.8+ installed on your system.
 Git for repository cloning.
 ### Step-by-Step Environment Setup
@@ -27,6 +32,7 @@ Execute the Data Analysis Script:
 python flight_analysis.py
 
 Dataset Used
+
 File Name: flight_pricing_dataset.csv
 Data Volume: Multi-attribute flight transactions covering domestic and international routes.
 Feature Data Dictionary
