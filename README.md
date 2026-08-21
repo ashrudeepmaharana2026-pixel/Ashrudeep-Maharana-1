@@ -1,5 +1,7 @@
 README
+
 Project Overview
+
 The *AI Travel Analyst* project is a comprehensive data science solution engineered to decode dynamic flight pricing mechanics. In the modern aviation industry, pricing algorithms respond dynamically to demand, lead times, carrier positioning, and seasonal trends. This project delivers an end-to-end analytical pipeline that cleans raw, real-world booking datasets, standardizes fragmented feature formats, conducts Exploratory Data Analysis (EDA), and uncovers key factors driving ticket prices.
 Project Statement
 Flight pricing is notoriously opaque and volatile, making it difficult for both consumers to optimize booking times and travel platforms to offer transparent pricing insights. Raw travel datasets often suffer from severe data quality issues, including mixed currency formats, inconsistent duration strings, missing route parameters, and unstandardized carrier naming conventions. 
